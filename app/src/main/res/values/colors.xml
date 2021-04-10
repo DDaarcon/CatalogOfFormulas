@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimaryDark">#ff3d00</color>
+    <color name="colorPrimary">#ff5916</color>
+    <color name="colorPrimaryAbitTransparent">#ccff5916</color>
+    <color name="colorPrimaryLight">#ffbc5c</color>
+    <color name="colorAccent">#ffeb3b</color>
+    <color name="transparentEditText">#00FFFFFF</color>
+</resources>

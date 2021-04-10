@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/wholeButton">
+
+    <RelativeLayout
+        android:id="@+id/almostWholeButton"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginEnd="50dp">
+
+        <Button
+            android:id="@+id/openArea"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            />
+
+        <ImageView
+            android:id="@+id/itemIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="8dp"
+            android:contentDescription="@string/typeOfFile"
+            app:srcCompat="@android:drawable/presence_invisible" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/itemIcon"
+            android:id="@+id/itemText"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="14dp"
+            android:textSize="23sp"
+            android:lines="1"
+            android:scrollHorizontally="true"
+            android:ellipsize="end"
+            android:clickable="true"
+            android:focusable="true"/>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/saveDeleteBtn"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/ic_menu_delete"
+        android:layout_alignParentEnd="true"
+        android:clickable="true"
+        android:focusable="true"
+        />
+
+    <Button
+        android:id="@+id/formulaPreviewBtn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@android:color/transparent"
+        android:layout_below="@id/almostWholeButton"
+        android:visibility="gone"
+        />
+    <io.github.kexanie.library.MathView
+        android:id="@+id/formulaPreview"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/almostWholeButton"
+        android:background="@color/colorAccent"
+        android:visibility="gone"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:scrollbars="none"
+        />
+
+</RelativeLayout>

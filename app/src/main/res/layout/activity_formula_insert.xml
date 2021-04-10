@@ -1,0 +1,924 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:auto="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryLight"
+    tools:context=".formula_insert">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginTop="18dp"
+        android:contentDescription="@string/fakeShadow"
+        android:background="@drawable/formula_background_fitter"
+        />
+
+    <io.github.kexanie.library.MathView
+        android:id="@+id/insertMath"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/transparentEditText"
+        auto:engine="KaTeX"
+        android:scrollbars="none"
+        auto:text="$$ $$">
+
+    </io.github.kexanie.library.MathView>
+
+    <EditText
+        android:id="@+id/insertMathText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/insertMath"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="4dp"
+        android:inputType="textVisiblePassword"
+        android:hint="@string/insertFormulaHint"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/moveCursorLeftBtn"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/insertMath"
+        android:layout_margin="4dp"
+        android:layout_toStartOf="@id/insertMathText"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@android:drawable/ic_media_rew"
+        android:onClick="moveCursorBtnClicked"
+        />
+
+    <Button
+        android:id="@+id/moveCursorRightBtn"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/insertMath"
+        android:layout_margin="4dp"
+        android:layout_toEndOf="@id/insertMathText"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@android:drawable/ic_media_ff"
+        android:onClick="moveCursorBtnClicked"
+        />
+
+    <TextView
+        android:id="@+id/testerView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/insertMathText"
+        android:layout_toStartOf="@id/insertBtn"
+        android:textSize="12sp"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/testerViewCursor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/testerView"
+        android:layout_toStartOf="@id/insertBtn"
+        android:textSize="15sp"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/infoBtn"
+        android:layout_width="46dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/insertMathText"
+        android:layout_toStartOf="@id/saveBtn"
+        android:layout_marginEnd="4dp"
+        android:layout_marginTop="4dp"
+        android:background="@android:drawable/ic_menu_info_details"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="infoBtn"
+        />
+
+    <Button
+        android:id="@+id/saveBtn"
+        android:layout_width="46dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/insertMathText"
+        android:layout_toStartOf="@id/insertBtn"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:background="@android:drawable/ic_menu_save"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="saveBtn" />
+
+    <Button
+        android:id="@+id/insertBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/insertMathText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="4dp"
+        android:onClick="insertBtn"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="@string/insertFormulaBtn" />
+
+    <Button
+        android:id="@+id/clearBtn"
+        android:layout_width="46dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/insertMathText"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_toEndOf="@id/insertBtn"
+        android:background="@android:drawable/ic_menu_close_clear_cancel"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="clearBtn" />
+
+    <Button
+        android:id="@+id/restoreBtn"
+        android:layout_width="46dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/insertMathText"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="4dp"
+        android:layout_toEndOf="@id/clearBtn"
+        android:background="@android:drawable/ic_menu_revert"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="restoreBtn" />
+
+
+    <!-- row 1 -->
+    <HorizontalScrollView
+        android:id="@+id/glowne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/insertBtn"
+        android:layout_centerHorizontal="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingStart="4dp"
+                android:paddingEnd="0dp"
+                android:text="@string/mathCategory1"
+                android:textAlignment="center"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/fracBtn"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/frac"
+                android:clickable="true"
+                android:focusable="true"
+                android:longClickable="true"
+                android:onClick="manyInsertBtns" />
+
+            <Button
+                android:id="@+id/powBtn"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/upindex"
+                android:clickable="true"
+                android:focusable="true"
+                android:longClickable="true"
+                android:onClick="manyInsertBtns" />
+
+            <Button
+                android:id="@+id/indexBtn"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/downindex"
+                android:clickable="true"
+                android:focusable="true"
+                android:longClickable="true"
+                android:onClick="manyInsertBtns" />
+
+            <Button
+                android:id="@+id/sqrtBtn"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/sqrt"
+                android:clickable="true"
+                android:focusable="true"
+                android:longClickable="true"
+                android:onClick="manyInsertBtns" />
+
+            <Button
+                android:id="@+id/rootBtn"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/root"
+                android:clickable="true"
+                android:focusable="true"
+                android:longClickable="true"
+                android:onClick="manyInsertBtns" />
+
+            <Button
+                android:id="@+id/percentBtn"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/percent"
+                android:clickable="true"
+                android:focusable="true"
+                android:longClickable="true"
+                android:onClick="manyInsertBtns" />
+
+            <Button
+                android:id="@+id/strongBtn"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/strong"
+                android:clickable="true"
+                android:focusable="true"
+                android:longClickable="true"
+                android:onClick="manyInsertBtns" />
+
+            <Button
+                android:id="@+id/degreeBtn"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/degree"
+                android:clickable="true"
+                android:focusable="true"
+                android:longClickable="true"
+                android:onClick="manyInsertBtns" />
+
+            <Button
+                android:id="@+id/minutesBtn"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/minutes"
+                android:clickable="true"
+                android:focusable="true"
+                android:longClickable="true"
+                android:onClick="manyInsertBtns" />
+
+            <Button
+                android:id="@+id/secondsBtn"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/seconds"
+                android:clickable="true"
+                android:focusable="true"
+                android:longClickable="true"
+                android:onClick="manyInsertBtns" />
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <!-- row 2-->
+    <HorizontalScrollView
+        android:id="@+id/podstawowe_znaki"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/glowne"
+        android:layout_centerHorizontal="true"
+        android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:maxWidth="110dp"
+            android:paddingStart="4dp"
+            android:paddingEnd="0dp"
+            android:text="@string/mathCategory2"
+            android:textAlignment="center"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/equalBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/equal"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+        <Button
+            android:id="@+id/plusBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/plusm"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+        <Button
+            android:id="@+id/minusBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/minus"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+        <Button
+            android:id="@+id/cdotBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/cdot"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+        <Button
+            android:id="@+id/timesBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/times"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+        <Button
+            android:id="@+id/colonBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/colon"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+        <Button
+            android:id="@+id/divBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/div"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+        <Button
+            android:id="@+id/ltBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/lt"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+        <Button
+            android:id="@+id/leBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/le"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+        <Button
+            android:id="@+id/geBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/ge"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+        <Button
+            android:id="@+id/gtBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/gt"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+        <Button
+            android:id="@+id/neqBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/neq"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+    </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <!-- row 3 -->
+    <HorizontalScrollView
+        android:id="@+id/nawiasy_znaki"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/podstawowe_znaki"
+        android:layout_centerHorizontal="true"
+        android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:maxWidth="110dp"
+        android:paddingStart="4dp"
+        android:paddingEnd="0dp"
+        android:text="@string/mathCategory3"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/lcircBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/lcirc"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+        <Button
+            android:id="@+id/lsquBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/lsqu"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+
+        <Button
+            android:id="@+id/langleBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/langle"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+        <Button
+            android:id="@+id/vertBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/vert"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+        <Button
+            android:id="@+id/rangleBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/rangle"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+        <Button
+            android:id="@+id/rsquBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/rsqu"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+        <Button
+            android:id="@+id/rcircBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/rcirc"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+        <Button
+            android:id="@+id/inBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/in"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+        <Button
+            android:id="@+id/notinBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/notin"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+        <Button
+            android:id="@+id/RightarrowBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/rightarrow"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+        <Button
+            android:id="@+id/approxBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/approx"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+        <Button
+            android:id="@+id/simBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/sim"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+        <Button
+            android:id="@+id/inftyBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/infty"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+        <Button
+            android:id="@+id/barBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/bar"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+        <Button
+            android:id="@+id/vecBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/vec"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+        <Button
+            android:id="@+id/ldotsBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/ldots"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+    </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <!-- row 4 -->
+    <HorizontalScrollView
+        android:id="@+id/funkcje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nawiasy_znaki"
+        android:layout_centerHorizontal="true"
+        android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:maxWidth="110dp"
+        android:paddingStart="4dp"
+        android:paddingEnd="0dp"
+        android:text="@string/mathCategory4"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/sinBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/sin"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+        <Button
+            android:id="@+id/cosBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/cos"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+        <Button
+            android:id="@+id/tanBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/tan"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+        <Button
+            android:id="@+id/sinupBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/sinup"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+<Button
+            android:id="@+id/cosupBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/cosup"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+<Button
+            android:id="@+id/tanupBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/tanup"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+<Button
+            android:id="@+id/logBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/log"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+<Button
+            android:id="@+id/lnBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/ln"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+
+    </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <!-- row 5 -->
+    <HorizontalScrollView
+        android:id="@+id/litery_greckie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/funkcje"
+        android:layout_centerHorizontal="true"
+        android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:maxWidth="110dp"
+        android:paddingStart="4dp"
+        android:paddingEnd="0dp"
+        android:text="@string/mathCategory5"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/piBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/pi"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+        <Button
+            android:id="@+id/alphaBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/alpha"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+        <Button
+            android:id="@+id/betaBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/beta"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+        <Button
+            android:id="@+id/gammaBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/gamma"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+        <Button
+            android:id="@+id/DeltaBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/deltab"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+        <Button
+            android:id="@+id/deltaBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/delta"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+        <Button
+            android:id="@+id/omegaBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/omega"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+        <Button
+            android:id="@+id/phiBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/phi"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+        <Button
+            android:id="@+id/rhoBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/rho"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+        <Button
+            android:id="@+id/epsilonBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/varepsilon"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+        <Button
+            android:id="@+id/OmegaBtn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/omegab"
+            android:clickable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:onClick="manyInsertBtns" />
+
+    </LinearLayout>
+
+    </HorizontalScrollView>
+
+
+</RelativeLayout>

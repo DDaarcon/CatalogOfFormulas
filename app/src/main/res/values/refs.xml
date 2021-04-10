@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <drawable name="background_moded">@android:drawable/progress_horizontal</drawable>
+</resources>

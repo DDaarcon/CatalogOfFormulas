@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:auto="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:gravity="top"
+    android:id="@+id/mainLayout"
+    android:background="@color/colorPrimaryLight">
+
+    <TextView
+        android:id="@+id/titleOfMenu"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textSize="22sp"
+        android:visibility="visible"/>
+
+    <ListView
+        android:id="@+id/savesMenu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="40dp"
+        android:layout_below="@id/titleOfMenu"
+        />
+
+
+    <LinearLayout
+        android:id="@+id/addingMenu"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:paddingTop="0dp"
+        android:scrollbars="vertical">
+
+        <Button
+            android:id="@+id/addFormula"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:clickable="true"
+            android:ellipsize="end"
+            android:focusable="true"
+            android:textStyle="normal"
+            android:background="@color/colorPrimaryAbitTransparent"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:lines="1"
+            android:onClick="addListItemClicked"
+            android:paddingStart="10dp"
+            android:paddingEnd="5dp"
+            android:paddingTop="0dp"
+            android:text="@string/formula"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/addCatalog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:clickable="true"
+            android:ellipsize="end"
+            android:focusable="true"
+            android:textStyle="normal"
+            android:background="@color/colorPrimaryAbitTransparent"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:lines="1"
+            android:onClick="addListItemClicked"
+            android:paddingStart="10dp"
+            android:paddingEnd="5dp"
+            android:paddingTop="0dp"
+            android:text="@string/catalog"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/addNote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:clickable="true"
+            android:ellipsize="end"
+            android:focusable="true"
+            android:textStyle="normal"
+            android:background="@color/colorPrimaryAbitTransparent"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:lines="1"
+            android:onClick="addListItemClicked"
+            android:paddingStart="10dp"
+            android:paddingEnd="5dp"
+            android:paddingTop="0dp"
+            android:text="@string/note"
+            android:textSize="20sp" />
+        <!--
+        <Button
+            android:id="@+id/addNoteWithFormula"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:clickable="true"
+            android:ellipsize="end"
+            android:focusable="true"
+            android:textStyle="normal"
+            android:background="@color/colorPrimaryAbitTransparent"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:lines="1"
+            android:onClick="addListItemClicked"
+            android:paddingStart="10dp"
+            android:paddingEnd="5dp"
+            android:paddingTop="0dp"
+            android:text="@string/noteWithFormula"
+            android:textSize="20sp" />
+           -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"
+            android:paddingEnd="5dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+
+            <Switch
+                android:id="@+id/OnOffPreviewSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:layout_marginEnd="10dp"
+                android:onClick="onOffSwitch"
+                />
+
+            <TextView
+                android:id="@+id/OnOffPreviewText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/previewOnOff"
+                android:textStyle="normal"
+                android:textSize="20sp"
+                android:onClick="onOffSwitch"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="22dp"
+        android:clickable="true"
+        android:focusable="true"
+
+        android:onClick="floatButtonClicked"
+        auto:srcCompat="@drawable/plus_larger">
+    </android.support.design.widget.FloatingActionButton>
+
+</RelativeLayout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Catalog of Notes</string>
+    <string name="catalog">Catalog</string>
+    <string name="formula">Formula</string>
+    <string name="note">Note</string>
+    <string name="previewOnOff">Formula preview</string>
+    <string name="insertFormulaHint">Text from keyboard</string>
+    <string name="insertFormulaBtn">Insert</string>
+    <string name="mathCategory1">Main</string>
+    <string name="mathCategory2">Standard signs</string>
+    <string name="mathCategory3">Brackets and signs</string>
+    <string name="mathCategory4">Functions</string>
+    <string name="mathCategory5">Greek letters</string>
+    <string name="enterName">Name...</string>
+    <string name="insertNoteHint">Note...</string>
+    <string name="fakeShadow">Fake shadow</string>
+    <string name="typeOfFile">File type icon</string>
+    <string name="deleteQMsg">Delete?</string>
+    <string name="deleteMsg">Delete</string>
+    <string name="canNotDeleteMsg">Can not delete</string>
+    <string name="catalogIsEmptyMsg">Catalog is probably not empty</string>
+    <string name="backMsg">Back</string>
+    <string name="openingErrorMsg">Error at opening</string>
+    <string name="savingErrorMsg">Error at saving</string>
+    <string name="exitQMsg">Exit?</string>
+    <string name="yesMsg">Yes</string>
+    <string name="insertNameMsg">Enter name:</string>
+    <string name="saveMsg">Save</string>
+    <string name="back2Msg">Discard</string>
+    <string name="unexpectedCharactersNameMsg">Only a–z, A–Z, 0–9, \'–\', \'_\'</string>
+    <string name="savedMsg">Saved</string>
+    <string name="canNotRestoreMoreMsg">Can not restore more</string>
+    <string name="unsupportedCharacterMsg">Unsupported character:</string>
+    <string name="unexpectedCharactersFormulaMsg">Only a–z, A–Z, 0–9, \'.\', \',\'</string>
+    <string name="TeXMsg">TeX</string>
+    <string name="wrongExtensionMsg">Wrong extension</string>
+    <string name="addMsg">Add</string>
+    <string name="photo">Photo</string>
+    <string name="noteWithFormula">Note with formula</string>
+</resources>

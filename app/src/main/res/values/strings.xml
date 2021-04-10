@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Katalog Notatek</string>
+    <string name="catalog">Katalog</string>
+    <string name="formula">Wzór</string>
+    <string name="note">Notatka</string>
+    <string name="previewOnOff">Podgląd wzorów</string>
+    <string name="noteWithFormula">Notatka ze wzorami</string>
+    <string name="photo">Zdjęcie</string>
+    <string name="insertFormulaHint">Tekst z klawiatury</string>
+    <string name="insertFormulaBtn">Wstaw</string>
+    <string name="mathCategory1">Główne</string>
+    <string name="mathCategory2">Podstawowe znaki</string>
+    <string name="mathCategory3">Nawiasy i znaki</string>
+    <string name="mathCategory4">Funkcje</string>
+    <string name="mathCategory5">Litery greckie</string>
+    <string name="enterName">Nazwa&#8230;</string>
+    <string name="insertNoteHint">Notatka&#8230;</string>
+    <string name="fakeShadow">Sztuczny cień</string>
+    <string name="typeOfFile">Ikona typu pliku</string>
+
+    <string name="deleteQMsg">Usunąć?</string>
+    <string name="deleteMsg">Usuń</string>
+    <string name="canNotDeleteMsg">Nie udało się usunąć</string>
+    <string name="catalogIsEmptyMsg">Katalog prawdopodobnie nie jest pusty</string>
+    <string name="backMsg">Wróć</string>
+    <string name="openingErrorMsg">Błąd podczas otwierania: </string>
+    <string name="savingErrorMsg">Błąd podczas zapisywania:</string>
+    <string name="exitQMsg">Wyjść?</string>
+    <string name="yesMsg">Tak</string>
+    <string name="insertNameMsg">Wprowadź nazwę:</string>
+    <string name="saveMsg">Zapisz</string>
+    <string name="back2Msg">Odrzuć</string>
+    <string name="unexpectedCharactersNameMsg">Tylko a–z, A–Z, 0–9, \'–\', \'_\'</string>
+    <string name="savedMsg">Zapisano</string>
+    <string name="canNotRestoreMoreMsg">Nie można więcej przywrócić</string>
+    <string name="unsupportedCharacterMsg">"Nieobsługiwany znak: "</string>
+    <string name="unexpectedCharactersFormulaMsg">Tylko a–z, A–Z, 0–9, \'.\', \',\'</string>
+    <string name="TeXMsg">TeX</string>
+    <string name="wrongExtensionMsg">Błędne rozszerzenie</string>
+    <string name="addMsg">Dodaj</string>
+
+</resources>
