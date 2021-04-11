@@ -143,11 +143,9 @@ public class MainActivity extends AppCompatActivity {
         if (menuIsHidden) {
             if (getFilesDir().equals(currentDirectory)) {
                 super.onBackPressed();
-                return;
             } else {
                 currentDirectory = currentDirectory.getParentFile();
                 refreshFiles();
-                return;
             }
         } else {
             floatButtonClicked((View) findViewById(R.id.floatingActionButton));
